@@ -1,0 +1,6 @@
+@AHCIS.LIS.Exchange_HostAddress = http://localhost:5294
+
+GET {{AHCIS.LIS.Exchange_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

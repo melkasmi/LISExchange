@@ -1,0 +1,897 @@
+{
+  "info": {
+    "_postman_id": "f8cfdaca-8400-4233-a991-5f302c3c780f",
+    "name": "LIS-integration-Health",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43945692"
+  },
+  "item": [
+    {
+      "name": "GetAccessToken Copy",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"phone\": \"05123258885\",\r\n  \"password\": \"HC@$$dso\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/api/v1/GetHealthCareAccessToken",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "GetHealthCareAccessToken"
+          ]
+        },
+        "description": "Get Access Token"
+      },
+      "response": [
+        {
+          "name": "success",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"phone\": \"05123258885\",\r\n  \"password\": \"HC@$$dso\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetHealthCareAccessToken",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetHealthCareAccessToken"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:29:17 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"userName\": \"Health Care User\",\n    \"phone\": \"05123258885\",\n    \"email\": \"Admin@HealthCare.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwNTEyMzI1ODg4NSIsInVzZXJfaWQiOiI4ZDY3MTQwMy1hMGZiLTQ2NWEtODExZC1mZDBjYTVhM2JiMzEiLCJBY2NvdW50VHlwZSI6IkhlYWx0aENhcmVJbnRlZ3JhdGlvbiIsIkFjY291bnRJZCI6IjhkNjcxNDAzLWEwZmItNDY1YS04MTFkLWZkMGNhNWEzYmIzMSIsIm5iZiI6MTc2NjkxNDE1NywiZXhwIjoxNzk4NDUwMTU3LCJpYXQiOjE3NjY5MTQxNTcsImlzcyI6Imh0dHA6Ly93d3cuc2VjdXJpdHkub3JnIiwiYXVkIjoiaHR0cDovL3d3dy5zZWN1cml0eS5vcmcifQ.WOMAsEsjTTAy8YgKN2bImygF2vjhlwsk3G0AO173wzM\"\n}"
+        },
+        {
+          "name": "error",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"phone\": \"05123258886\",\r\n  \"password\": \"HC@$$dsr\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetHealthCareAccessToken",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetHealthCareAccessToken"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:30:46 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"errors\": {\n        \"msgs\": [\n            \"Phone Number Not Found\"\n        ]\n    }\n}"
+        }
+      ]
+    },
+    {
+      "name": "GetAllOwners",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/api/v1/GetAllOwners",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "GetAllOwners"
+          ],
+          "query": [
+            {
+              "key": "pageNo",
+              "value": "4",
+              "disabled": true
+            },
+            {
+              "key": "perPage",
+              "value": "10",
+              "disabled": true
+            },
+            {
+              "key": "keyword",
+              "value": "IPMTest",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "error-auth",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllOwners",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllOwners"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "WWW-Authenticate",
+              "value": "Bearer"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:34:35 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        },
+        {
+          "name": "success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllOwners?pageNo=1&perPage=10",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllOwners"
+              ],
+              "query": [
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                },
+                {
+                  "key": "perPage",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:36:25 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"totalCount\": 55,\n    \"currentPage\": 1,\n    \"perPage\": 10,\n    \"data\": [\n        {\n            \"name\": \"IPMTest Owner\",\n            \"email\": null,\n            \"phone\": \"+966545056563\",\n            \"telephoneNumber\": null,\n            \"nationalOrIqamaId\": \"0123456853\",\n            \"ownerType\": \"Natural Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"After Edit\",\n            \"email\": \"afteredit04@gmail.com\",\n            \"phone\": \"+966540242023\",\n            \"telephoneNumber\": null,\n            \"nationalOrIqamaId\": \"012345654325\",\n            \"ownerType\": null,\n            \"isActive\": true,\n            \"holdingsCount\": 0\n        },\n        {\n            \"name\": \"Test New Owner\",\n            \"email\": null,\n            \"phone\": \"0514714714\",\n            \"telephoneNumber\": \"0514714714\",\n            \"nationalOrIqamaId\": \"1212545655896856\",\n            \"ownerType\": \"Natural Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"IPMTest Owner\",\n            \"email\": null,\n            \"phone\": \"+966507280337\",\n            \"telephoneNumber\": null,\n            \"nationalOrIqamaId\": \"0123456852\",\n            \"ownerType\": \"Natural Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"string\",\n            \"email\": null,\n            \"phone\": \"0096s6565805498\",\n            \"telephoneNumber\": null,\n            \"nationalOrIqamaId\": \"string\",\n            \"ownerType\": \"string\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"IPMTest Owner\",\n            \"email\": null,\n            \"phone\": \"0566851111\",\n            \"telephoneNumber\": null,\n            \"nationalOrIqamaId\": \"0123456852\",\n            \"ownerType\": \"Natural Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"IPm Test\",\n            \"email\": null,\n            \"phone\": \"0123456782\",\n            \"telephoneNumber\": null,\n            \"nationalOrIqamaId\": \"01258963\",\n            \"ownerType\": \"Natural Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"vghfjhgfhgj\",\n            \"email\": \"xrrrrrr@gmail.com\",\n            \"phone\": \"0589797897\",\n            \"telephoneNumber\": \"0578678678\",\n            \"nationalOrIqamaId\": \"1234567998\",\n            \"ownerType\": \"Natural Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"jghmghjmg\",\n            \"email\": null,\n            \"phone\": \"0565645768\",\n            \"telephoneNumber\": \"0567867896\",\n            \"nationalOrIqamaId\": \"5745847867\",\n            \"ownerType\": \"Legal Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"jivodjhbixfgn\",\n            \"email\": null,\n            \"phone\": \"+966505343345\",\n            \"telephoneNumber\": \"+966507823466\",\n            \"nationalOrIqamaId\": \"3634563456\",\n            \"ownerType\": \"Legal Person\",\n            \"isActive\": false,\n            \"holdingsCount\": 0\n        }\n    ]\n}"
+        },
+        {
+          "name": "success-search",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllOwners?pageNo=1&perPage=10&keyword=IPMTest",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllOwners"
+              ],
+              "query": [
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                },
+                {
+                  "key": "perPage",
+                  "value": "10"
+                },
+                {
+                  "key": "keyword",
+                  "value": "IPMTest"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:37:03 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"totalCount\": 3,\n    \"currentPage\": 1,\n    \"perPage\": 10,\n    \"data\": [\n        {\n            \"name\": \"IPMTest Owner\",\n            \"email\": null,\n            \"phone\": \"+966545056563\",\n            \"telephoneNumber\": null,\n            \"nationalOrIqamaId\": \"0123456853\",\n            \"ownerType\": \"Natural Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"IPMTest Owner\",\n            \"email\": null,\n            \"phone\": \"+966507280337\",\n            \"telephoneNumber\": null,\n            \"nationalOrIqamaId\": \"0123456852\",\n            \"ownerType\": \"Natural Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        },\n        {\n            \"name\": \"IPMTest Owner\",\n            \"email\": null,\n            \"phone\": \"0566851111\",\n            \"telephoneNumber\": null,\n            \"nationalOrIqamaId\": \"0123456852\",\n            \"ownerType\": \"Natural Person\",\n            \"isActive\": true,\n            \"holdingsCount\": 1\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "GetAllOwnerHoldings",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/api/v1/GetAllOwnerHoldings",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "GetAllOwnerHoldings"
+          ],
+          "query": [
+            {
+              "key": "ownerNationalId",
+              "value": "1044914495",
+              "disabled": true
+            },
+            {
+              "key": "keyword",
+              "value": "IPMTest",
+              "disabled": true
+            },
+            {
+              "key": "pageNo",
+              "value": "1",
+              "disabled": true
+            },
+            {
+              "key": "perPage",
+              "value": "10",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "error-auth",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllOwnerHoldings",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllOwnerHoldings"
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "WWW-Authenticate",
+              "value": "Bearer"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:38:11 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        },
+        {
+          "name": "error-validation",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllOwnerHoldings",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllOwnerHoldings"
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:38:27 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"errors\": {\n        \"msgs\": [\n            \"Please Set Owner NationalId\"\n        ]\n    }\n}"
+        },
+        {
+          "name": "success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllOwnerHoldings?ownerNationalId=0123456853",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllOwnerHoldings"
+              ],
+              "query": [
+                {
+                  "key": "ownerNationalId",
+                  "value": "0123456853"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:39:41 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"totalCount\": 1,\n    \"currentPage\": 1,\n    \"perPage\": 10,\n    \"data\": [\n        {\n            \"holdingLis\": \"112369852147\",\n            \"holdingName\": \"IPMTest Holding\",\n            \"mewaNumber\": \"\",\n            \"ownerName\": \"IPMTest Owner\",\n            \"ownerNationalId\": \"0123456853\",\n            \"ownerPhone\": \"+966545056563\",\n            \"holdingLegalType\": null,\n            \"physicalRegoinAr\": \"المدينة\",\n            \"physicalRegoinEn\": \"Madina\",\n            \"physicalGovernorateAr\": \"منطقة الرياض\",\n            \"physicalGovernorateEn\": \"Riyadh\",\n            \"physicalCityAr\": \"الرياض\",\n            \"physicalCityEn\": \"Riyadh\",\n            \"location\": \"test\",\n            \"lat\": \"0.123654878\",\n            \"lng\": \"0.5258888\",\n            \"postalRegoinAr\": null,\n            \"postalRegoinEn\": null,\n            \"postalGovernorateAr\": null,\n            \"postalGovernorateEn\": null,\n            \"postalCityAr\": null,\n            \"postalCityEn\": null,\n            \"postalStreet\": null,\n            \"postalStreetNo\": null,\n            \"postalRemarks\": null,\n            \"animalsCount\": 0\n        }\n    ]\n}"
+        },
+        {
+          "name": "success-saech",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllOwnerHoldings?ownerNationalId=0123456853&keyword=IPMTest",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllOwnerHoldings"
+              ],
+              "query": [
+                {
+                  "key": "ownerNationalId",
+                  "value": "0123456853"
+                },
+                {
+                  "key": "keyword",
+                  "value": "IPMTest"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:40:30 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"totalCount\": 1,\n    \"currentPage\": 1,\n    \"perPage\": 10,\n    \"data\": [\n        {\n            \"holdingLis\": \"112369852147\",\n            \"holdingName\": \"IPMTest Holding\",\n            \"mewaNumber\": \"\",\n            \"ownerName\": \"IPMTest Owner\",\n            \"ownerNationalId\": \"0123456853\",\n            \"ownerPhone\": \"+966545056563\",\n            \"holdingLegalType\": null,\n            \"physicalRegoinAr\": \"المدينة\",\n            \"physicalRegoinEn\": \"Madina\",\n            \"physicalGovernorateAr\": \"منطقة الرياض\",\n            \"physicalGovernorateEn\": \"Riyadh\",\n            \"physicalCityAr\": \"الرياض\",\n            \"physicalCityEn\": \"Riyadh\",\n            \"location\": \"test\",\n            \"lat\": \"0.123654878\",\n            \"lng\": \"0.5258888\",\n            \"postalRegoinAr\": null,\n            \"postalRegoinEn\": null,\n            \"postalGovernorateAr\": null,\n            \"postalGovernorateEn\": null,\n            \"postalCityAr\": null,\n            \"postalCityEn\": null,\n            \"postalStreet\": null,\n            \"postalStreetNo\": null,\n            \"postalRemarks\": null,\n            \"animalsCount\": 0\n        }\n    ]\n}"
+        },
+        {
+          "name": "success-pagination",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllOwnerHoldings?ownerNationalId=0123456853&keyword=IPMTest&pageNo=1&perPage=10",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllOwnerHoldings"
+              ],
+              "query": [
+                {
+                  "key": "ownerNationalId",
+                  "value": "0123456853"
+                },
+                {
+                  "key": "keyword",
+                  "value": "IPMTest"
+                },
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                },
+                {
+                  "key": "perPage",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:41:20 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"totalCount\": 1,\n    \"currentPage\": 1,\n    \"perPage\": 10,\n    \"data\": [\n        {\n            \"holdingLis\": \"112369852147\",\n            \"holdingName\": \"IPMTest Holding\",\n            \"mewaNumber\": \"\",\n            \"ownerName\": \"IPMTest Owner\",\n            \"ownerNationalId\": \"0123456853\",\n            \"ownerPhone\": \"+966545056563\",\n            \"holdingLegalType\": null,\n            \"physicalRegoinAr\": \"المدينة\",\n            \"physicalRegoinEn\": \"Madina\",\n            \"physicalGovernorateAr\": \"منطقة الرياض\",\n            \"physicalGovernorateEn\": \"Riyadh\",\n            \"physicalCityAr\": \"الرياض\",\n            \"physicalCityEn\": \"Riyadh\",\n            \"location\": \"test\",\n            \"lat\": \"0.123654878\",\n            \"lng\": \"0.5258888\",\n            \"postalRegoinAr\": null,\n            \"postalRegoinEn\": null,\n            \"postalGovernorateAr\": null,\n            \"postalGovernorateEn\": null,\n            \"postalCityAr\": null,\n            \"postalCityEn\": null,\n            \"postalStreet\": null,\n            \"postalStreetNo\": null,\n            \"postalRemarks\": null,\n            \"animalsCount\": 0\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "GetAllHoldingAnimals",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/api/v1/GetAllHoldingAnimals?pageNo=1&perPage=10",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "GetAllHoldingAnimals"
+          ],
+          "query": [
+            {
+              "key": "holdingLisNumber",
+              "value": "123456",
+              "disabled": true
+            },
+            {
+              "key": "pageNo",
+              "value": "1"
+            },
+            {
+              "key": "perPage",
+              "value": "10"
+            },
+            {
+              "key": "keyword",
+              "value": "",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "error-auth",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllHoldingAnimals?pageNo=1&perPage=10",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllHoldingAnimals"
+              ],
+              "query": [
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                },
+                {
+                  "key": "perPage",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "WWW-Authenticate",
+              "value": "Bearer"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:43:39 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": null
+        },
+        {
+          "name": "error-validation",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllHoldingAnimals?pageNo=1&perPage=10",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllHoldingAnimals"
+              ],
+              "query": [
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                },
+                {
+                  "key": "perPage",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:44:22 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"errors\": {\n        \"msgs\": [\n            \"Please Set Holding Lis Number\"\n        ]\n    }\n}"
+        },
+        {
+          "name": "success",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/api/v1/GetAllHoldingAnimals?holdingLisNumber=123456&pageNo=1&perPage=10",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "GetAllHoldingAnimals"
+              ],
+              "query": [
+                {
+                  "key": "holdingLisNumber",
+                  "value": "123456"
+                },
+                {
+                  "key": "pageNo",
+                  "value": "1"
+                },
+                {
+                  "key": "perPage",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Server",
+              "value": "Microsoft-IIS/10.0"
+            },
+            {
+              "key": "X-Powered-By",
+              "value": "ASP.NET"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 28 Dec 2025 09:47:22 GMT"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"totalCount\": 1,\n    \"currentPage\": 1,\n    \"perPage\": 10,\n    \"data\": [\n        {\n            \"ownerName\": \"نوير مسعد غانم الجهني\",\n            \"holdingName\": \"alo\",\n            \"holdingLis\": \"123456\",\n            \"animalTag\": \"505\",\n            \"fatherID\": null,\n            \"motherID\": null,\n            \"gender\": \"Male\",\n            \"deviceType\": null,\n            \"description\": null,\n            \"animalSpeciesName\": \"Camel\",\n            \"animalBreedName\": \"Bactrian Camel\",\n            \"speciesAddingPurpose\": \"Camelus Bactrians\",\n            \"dateOfBirth\": \"2025-08-14T00:00:00\",\n            \"age\": \"0 Year/s, 4 Month/s , 16 Day/s\",\n            \"addingReason\": \"Identification\",\n            \"registrationDate\": \"2025-08-14T00:00:00\",\n            \"status\": \"Moved On\"\n        }\n    ]\n}"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "token",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
